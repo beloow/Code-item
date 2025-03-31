@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code item</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            border: none;
+            outline: none;
+            scroll-behavior: smooth;
+            font-family: 'poppins', sans-serif;
+        }
+        body{
+            background-color: whitesmoke;
+        }
+        header{
+            text-align: center;
+            color: black;
+        }
+        section{
+            padding: 10em;
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            margin: 0px auto;
+            max-width: 50rem;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <H1>Code item</H1>
+    </header>
+    <section>
+        <div class="container">
+            <div class="code-label" title=""><button onclick="copyText()" class="copybutton">copy</button></div>
+            <div class="code-texte"><p id="code" class="code"><span class="function">Sudo apt</span> update</p></div>
+        </div>
+    </section>
+
+    <style>
+        .code-label{
+            z-index: 2;
+            background-color: rgb(41, 51, 77);
+            border-radius: 1em 1em 0px 0px;
+            color: rgb(255, 255, 255);
+            display: flex;
+            padding: 0.75em 1.5em;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 16px;
+            position: relative;
+            min-height: 3.25em;
+            z-index: 2;
+        }
+        .code{
+            z-index: 1;
+            background: rgb(17, 25, 46);
+            color: rgb(247, 248, 251);
+            border-radius: 0 0 1em 1em;
+            box-shadow: rgba(17, 25, 46, 0.1) 0px 0px 0px 0.125em inset;
+            display: block;
+            margin: -0.5em 0px;
+            overflow: auto;
+            padding: 1.5em;
+            white-space: normal;
+            overflow-wrap: normal;
+        }
+        .copybutton{
+            background: rgb(105, 111, 176);
+            border-radius: 0.625em;
+            color: rgb(255, 255, 255);
+            cursor: pointer;
+            line-height: 1;
+            padding: 0.375em 0.5em;
+        }
+        span.function{
+            color: rgb(255, 175, 140);
+        }
+    </style>
+
+    <script>
+        function copyText() {
+            // Get the text field
+            var codeText = document.getElementById("code");
+        
+            // Copy the text inside the text field
+            navigator.clipboard.writeText(codeText.textContent);
+            
+            // Alert the copied text
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                toast.onmouseenter = Swal.stopTimer;
+                toast.onmouseleave = Swal.resumeTimer;
+                }
+            });
+            Toast.fire({
+                icon: "success",
+                title: "Copied !"
+            });
+            console.log(codeText.textContent);
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>
