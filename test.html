@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copie Commande PowerShell</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .command-container {
+            background: #282c34;
+            color: #61dafb;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 400px;
+        }
+        .copy-btn {
+            background: #61dafb;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 3px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="command-container" onclick="copyToClipboard(this)">
+        <span class="command">Get-Process</span>
+        <button class="copy-btn">Copier</button>
+    </div>
+    <div class="command-container" onclick="copyToClipboard(this)">
+        <span class="command">Get-Service</span>
+        <button class="copy-btn">Copier</button>
+    </div>
+    <script>
+        function copyToClipboard(element) {
+            const command = element.querySelector(".command").textContent;
+            navigator.clipboard.writeText(command).then(() => {
+                alert("Commande copiée : " + command);
+            }).catch(err => {
+                console.error("Erreur lors de la copie : ", err);
+            });
+        }
+    </script>
+</body>
+</html>
